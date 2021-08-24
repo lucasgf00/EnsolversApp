@@ -2,26 +2,26 @@
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
     <head>
-        <title>Agregar Task</title>
+        <title>Agregar Folder</title>
         <meta charset="UTF-8">
     </head>
     <body>
-        <section th:fragment="agregarTodo">
-            <div id="agregarTodo" class="modal fade">
+        <section th:fragment="agregarFolder">
+            <div id="agregarFolder" class="modal fade">
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
-                        <div class="modal-header bg-info text-white">
-                            <h5 class="modal-title" th:text="#{accion.agregarTodo}">Add Tasks</h5>
+                        <div class="modal-header bg-warning text-white">
+                            <h5 class="modal-title" th:text="#{accion.agregarFolder}">Add Folder</h5>
                             <button class="close" data-bs-dismiss="modal">
                                 <span>&times;</span>
                             </button>
                         </div>
-                        <form th:action="@{/guardarTodo}" th:object="${todo}"
+                        <form th:action="@{/guardarFolder}" th:object="${folder}"
                               method="POST" class="was-validated">
                             <div class="modal-body">
                                 <div class="form-group">
-                                    <label for="todo" th:text="#{tarea.nombre}">Todo</label>
-                                    <input type="text" class="form-control" name="task" required="task">
+                                    <label for="folder" th:text="#{carpeta.nombre}">Folder</label>
+                                    <input type="text" class="form-control" name="folder" required="folder">
                                 </div>
                             </div>
                             <div class="modal-footer">

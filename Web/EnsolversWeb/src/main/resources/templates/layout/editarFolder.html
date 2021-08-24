@@ -2,15 +2,15 @@
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
     <head>
-        <title>Edit Task</title>
+        <title>Edit Folder</title>
         <meta charset="UTF-8">
     </head>
     <body>
-        <section th:fragment="editarTodo">
-            <form th:action="@{/guardarTodo}" th:object="${todo}"
+        <section th:fragment="editarFolder">
+            <form th:action="@{/guardarFolder}" th:object="${folder}"
                   method="POST" class="was-validated">
-                <input type="hidden" name="idTodo" th:field="*{idTodo}">
-                <section th:replace="layout/botonesEditar :: botonesEditarTodo"></section>
+                <input type="hidden" name="idFolder" th:field="*{idFolder}">
+                <section th:replace="layout/botonesEditar :: botonesEditarFolder"></section>
                 <div id="details">
                     <div class="row justify-content-center">
                         <div class="col-md-10">
@@ -20,9 +20,9 @@
                                 </div>
                                 <div class="card-body">
                                     <div class="form-group">
-                                        <label for="task">[[#{tarea.nombre}]]</label>
-                                        <input type="text" class="form-control" name="task" 
-                                               required="true" th:field="*{task}"/>
+                                        <label for="folder">[[#{carpeta.nombre}]]</label>
+                                        <input type="text" class="form-control" name="folder" 
+                                               required="true" th:field="*{folder_name}"/>
                                     </div>
                                 </div>
                             </div>

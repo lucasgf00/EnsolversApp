@@ -7,9 +7,9 @@ public interface TodoService {
     
     public List<Todo> listarTodo();
     
-    public void guardar(Todo todo);
+    public void guardarTodo(Todo todo);
     
-    public void eliminar (Todo todo);
+    public void eliminarTodo (Todo todo);
     
     public Todo encontrarTodo(Todo todo);
 }

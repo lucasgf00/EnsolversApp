@@ -21,13 +21,13 @@ public class TodoServiceImpl implements TodoService {
 
     @Override
     @Transactional
-    public void guardar(Todo todo) {
+    public void guardarTodo(Todo todo) {
         todoDao.save(todo);
     }
 
     @Override
     @Transactional
-    public void eliminar(Todo todo) {
+    public void eliminarTodo(Todo todo) {
         todoDao.delete(todo);
     }
 

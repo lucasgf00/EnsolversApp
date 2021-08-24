@@ -10,16 +10,27 @@
             <div class="container">
                 <div class="row">
                     <div>
-                        <div class="bd-example">
-                            <div class="accordion" id="accordionTask">
-                                <div class="accordion-item">
-                                    <h4 class="accordion-header" id="headingOne">
+                        <script>
+                            function addPanel(panelNo) {
+                                var panelContent = "<h4>Panel " + panelNo + " Link</h4><div>Panel " + panelNo + " content goes here</div>"
+                                $('#accordion').append(panelContent).accordion('destroy').accordion({collapsible: true, active: panelNo});
+
+                                var newPanelBtn = panelNo + 1;
+                                $('#addPanel').html("<a href='#add' id='addPanel' onclick='addPanel(" + newPanelBtn + ")'>Add Panel</a>");
+                            }
+                        </script>
+                        <div class="accordion" id="accordionOne">
+                            <div class="accordion-item">
+                                <div th:if="${folder != null and !folder.empty}">
+                                    <h4 class="accordion-header" id="headingFolder" th:each="folder, contador : ${folder}"> 
                                         <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                            Accordion Item #1
+                                            [[${folder.folder_name}]]
                                         </button>
                                     </h4>
-                                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                                        <div class="accordion-body">
+                                </div>
+                                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        <div class="row">
                                             <div class="col-md-9">
                                                 <div class="card">
                                                     <div class="card-header">
@@ -40,13 +51,13 @@
                                                                     <td><input class="form-check-input" type="checkbox" value="" id="defaultCheck1"> [[${contador.count}]]</td>
                                                                     <td>[[${todo.task}]]</td>
                                                                     <td>
-                                                                        <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/editar/} + ${todo.idTodo}"
+                                                                        <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/editarTodo/} + ${todo.idTodo}"
                                                                            class="btn btn-success">
                                                                             <i class="fas fa-angle-double-right"> [[#{accion.editar}]]</i>
                                                                         </a>
                                                                     </td>
                                                                     <td>
-                                                                        <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/eliminar(idTodo=${todo.idTodo})}"
+                                                                        <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/eliminarTodo(idTodo=${todo.idTodo})}"
                                                                            class="btn btn-danger">
                                                                             <i class="fas fa-angle-double-right"> [[#{accion.eliminar}]]</i>
                                                                         </a>
@@ -59,13 +70,16 @@
                                                         <span th:text="#{tarea.lista-vacia}">Lista Vacia</span>
                                                     </div>
                                                 </div>
-                                            </div> 
+                                            </div>
+                                            <div class="col-3 ms-auto align-self-center">
+                                                <section th:replace="layout/botonesAgregarTodo :: botonesAgregarTodo"/>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
-                        </section>
-                        </body>
-                        </html>
+                    </div>
+                    </section>
+                    </body>
+                    </html>
