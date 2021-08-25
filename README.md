@@ -11,4 +11,5 @@ This is a web app exercise.
 ## Content
 I made this website to create "to-do items" and folders to group them.
 ## Accessibility
-There is a bash script to make a DB, also to log in as an 'admin' you need to use: "username: admin | password: 123" or like an user: "username: user | password: 123"
+There is a bash script to make a DB, also to log in as an 'admin' you need to use: 
+"username: admin | password: 123" or like an user: "username: user | password: 123"
