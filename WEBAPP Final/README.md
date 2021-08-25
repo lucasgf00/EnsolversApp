@@ -13,7 +13,7 @@ This is a web app exercise for "Ensolvers" team and it was done in 3 days.
   - WebJars Locator 0.41
   - Thymeleaf 3.0.12
 ## Content
-I made this website to create a task list, it has a login and you can edit the files.
+I made this website to create a task list, it has a login and you can edit the files, also is mobile supported.
 ## Accessibility
 There is a bash script to make a DB, also to log in as an 'admin' you need to use: 
 
