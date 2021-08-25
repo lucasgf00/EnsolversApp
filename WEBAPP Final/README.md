@@ -21,3 +21,4 @@ There is a bash script to make a DB, also to log in as an 'admin' you need to us
     
     manually create the DB.
   - The logging system is made with an encrypted pass.
+  - As and admin you can edit, delete and save 'tasks', however as user you only can watch entities.
