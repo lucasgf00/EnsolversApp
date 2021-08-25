@@ -1,6 +1,6 @@
 # EnsolversApp
-This is a web app exercise.
-## Tools
+This is a web app exercise for "Ensolvers" team and it was done in 3 days.
+## Tools & Libs
   - Apache NetBeans IDE 12.4
   - Git Bash
   - MySQL Workbench 8.0 CE
@@ -8,8 +8,12 @@ This is a web app exercise.
   - Spring Boot 2.5.4
   - Bootstrap 5.1.0
   - JQuery 3.6.0
+  - Ubuntu 20.04 LTS
+  - FontAwesome 5.13.3
+  - WebJars Locator 0.41
+  - Thymeleaf 3.0.12
 ## Content
-I made this website to create a task list
+I made this website to create a task list, it has a login and you can edit the files.
 ## Accessibility
 There is a bash script to make a DB, also to log in as an 'admin' you need to use: 
 
