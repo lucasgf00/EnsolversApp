@@ -6,53 +6,59 @@
         <meta charset="UTF-8">
     </head>
     <body>
-        <section th:fragment="listadoTodo">
+        <section th:fragment="listadoFolder">
             <div class="container">
                 <div class="row">
                     <div class="row">
-                        <div class="col-ms-9">
+                        <div class="col-ms-3">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4>[[#{tarea.titulo-lista}]]</h4>
+                                    <h4>[[#{carpeta.titulo}]]</h4>
                                 </div>
-                                <div >
+                                <div th:if="${folder != null and !folder.empty}">
                                     <table class="table table-stryped">
                                         <thead class="table-dark">
                                             <tr>
-                                                <th>#</th>
-                                                <th th:text="#{tarea.nombre}">Nombre</th>
+                                                <th th:text="#{carpeta.nombre}">Nombre</th>
+                                                <th></th>
                                                 <th></th>
                                                 <th></th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr th:each="todo, contador : ${todo}">
-                                                <td><input class="form-check-input" type="checkbox" value="" id="defaultCheck1"></td>
-                                                <td>[[${todo.task}]]</td>
+                                            <tr th:each="folder, contador : ${folder}">
+                                                <td>[[${folder.folder_name}]]</td>
                                                 <td>
-                                                    <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/editarTodo/} + ${todo.idTodo}"
+                                                    <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/editarFolder/} + ${folder.idFolder}"
                                                        class="btn btn-success">
                                                         <i class="fas fa-angle-double-right"> [[#{accion.editar}]]</i>
                                                     </a>
                                                 </td>
                                                 <td>
-                                                    <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/eliminarTodo(idTodo=${todo.idTodo})}"
+                                                    <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/eliminarFolder(idFolder=${folder.idFolder})}"
                                                        class="btn btn-danger">
                                                         <i class="fas fa-angle-double-right"> [[#{accion.eliminar}]]</i>
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/verTodo/} + ${folder.idFolder}"
+                                                       class="btn btn-success">
+                                                        <i class="fas fa-angle-double-right"> [[#{accion.items}]]</i>
                                                     </a>
                                                 </td>
                                             </tr>
                                         </tbody>
                                     </table>
                                 </div>
-                                <!-- <div class="text-center p-2" th:if="${todo == null or todo.empty}">
-                                    <span th:text="#{tarea.lista-vacia}">Lista Vacia</span>
-                                </div> -->
+                                <div class="text-center p-2" th:if="${folder == null or todo.empty}">
+                                    <span th:text="#{carpeta.vacia}">Lista Vacia</span>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
         </section>
     </body>
 </html>

@@ -39,9 +39,14 @@ public class ControladorInicio {
         return "index";
     }
     
-    @GetMapping("/agregar")
-    public String agregar(Todo todo, Folder folder) {
-        return "modificar";
+    @GetMapping("/agregarTodo")
+    public String agregarTodo(Todo todo) {
+        return "modificarTodo";
+    }
+    
+    @GetMapping("/agregarFolder")
+    public String agregarFolder(Folder folder) {
+        return "modificarFolder";
     }
     
     @PostMapping("/guardarTodo")
@@ -50,7 +55,7 @@ public class ControladorInicio {
             return "modificarTodo";
         }
         todoService.guardarTodo(todo);
-        return "redirect:/";
+        return "tasks";
     }
     
     @PostMapping("/guardarFolder")
@@ -69,6 +74,13 @@ public class ControladorInicio {
         return "modificarTodo";
     }
     
+    @GetMapping("/verTodo/{idTodo}")
+    public String verTodo(Todo todo, Model model) {
+        todo = todoService.encontrarTodo(todo);
+        model.addAttribute("todo", todo);
+        return "tasks";
+    }
+    
     @GetMapping("/editarFolder/{idFolder}")
     public String editarFolder(Model model, Folder folder) {
         folder = folderService.encontrarFolder(folder);
@@ -77,15 +89,14 @@ public class ControladorInicio {
     }
     
     @GetMapping("/eliminarTodo")
-    public String eliminarTodo(Todo todo, Folder folder) {
+    public String eliminarTodo(Todo todo) {
         todoService.eliminarTodo(todo);
-        folderService.eliminarFolder(folder);
         return "redirect:/";
     }
     
-    //@GetMapping("/eliminarFolder")
-    //public String eliminarFolder(Folder folder) {
-    //    folderService.eliminarFolder(folder);
-    //    return "redirect:/";
-    //}
+    @GetMapping("/eliminarFolder")
+    public String eliminarFolder(Folder folder) {
+        folderService.eliminarFolder(folder);
+        return "redirect:/";
+    }
 }   

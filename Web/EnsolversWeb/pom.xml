@@ -12,7 +12,7 @@
     <artifactId>EnsolversWeb</artifactId>
     <version>1.0</version>
     <name>EnsolversWeb</name>
-    <description>Hola Mundo con Spring</description>
+    <description>Ensolvers</description>
     <properties>
         <java.version>16</java.version>
     </properties>
@@ -95,5 +95,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>

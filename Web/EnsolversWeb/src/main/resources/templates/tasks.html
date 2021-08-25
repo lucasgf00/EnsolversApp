@@ -6,12 +6,14 @@
         <meta charset="UTF-8">
     </head>
     <body>
-        
+
         <header th:replace="layout/plantilla :: header"/>
-       <section th:replace="layout/botonesAgregarTodo :: botonesAgregarFolder"/>
-        <section th:replace="layout/agregarFolder :: agregarFolder"/>
-        <section th:replace="layout/listadoFolder :: listadoFolder"/> 
+        <section th:replace="layout/botonesEditar :: botonesRegresarTodo"/>
+        <section th:replace="layout/botonesAgregarTodo :: botonesAgregarTodo"/>
+        <section th:replace="layout/agregarTodo :: agregarTodo"/>
+        <section th:replace="layout/listadoTodo :: listadoTodo"/>
+                                    
         <footer th:replace="layout/plantilla :: footer"/>
-       
+
     </body>
 </html>
