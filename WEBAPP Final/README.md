@@ -14,3 +14,10 @@ I made this website to create a task list
 There is a bash script to make a DB, also to log in as an 'admin' you need to use: 
 
 "username: admin | password: 123" or like an user: "username: user | password: 123"
+## Notes
+  - Run the bash "dbBashGF" to create the schema DB for running the app, else
+    
+    you can open the .bash with a text editor like 'gedit', copy the code and
+    
+    manually create the DB.
+  - The logging system is made with an encrypted pass.
