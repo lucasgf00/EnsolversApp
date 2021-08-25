@@ -22,3 +22,8 @@ There is a bash script to make a DB, also to log in as an 'admin' you need to us
     manually create the DB.
   - The logging system is made with an encrypted pass.
   - As and admin you can edit, delete and save 'tasks', however as user you only can watch entities.
+  - If your text editor (Apache netBeans, Eclipse IDE, etc.) has 'HTML error checking' please disable it
+
+    for a better reading experience.
+## Run
+To run this website you need the DataBase already created and go to the 'localhost:8080' port into your browser.
