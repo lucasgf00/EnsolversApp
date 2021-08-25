@@ -1,0 +1,44 @@
+#!/bin/bash
+
+echo "WEBAPP DB SCHEMA \n";
+
+echo "CREATING A DATABASE";
+sleep 1s;
+mysql -u root -p << MYSQL
+	
+	DROP SCHEMA IF EXISTS ensolvers;
+	CREATE SCHEMA ensolvers DEFAULT CHARACTER SET utf8 ;
+	CREATE TABLE ensolvers.todo (
+  	id_todo INT NOT NULL AUTO_INCREMENT,
+  	task VARCHAR(300) NOT NULL,
+  	PRIMARY KEY (id_todo));
+
+	CREATE TABLE ensolvers.usuario (
+  	id_usuario INT NOT NULL AUTO_INCREMENT,
+  	username VARCHAR(45) NULL,
+  	password VARCHAR(128) NULL,
+  	PRIMARY KEY (id_usuario));
+
+	CREATE TABLE ensolvers.rol (
+  	id_rol INT NOT NULL AUTO_INCREMENT,
+  	nombre VARCHAR(45) NULL,
+  	id_usuario INT NULL,
+  	PRIMARY KEY (id_rol),
+  	INDEX id_rol_usuario_idx (id_usuario ASC) VISIBLE,
+  	CONSTRAINT id_rol_usuario
+    	FOREIGN KEY (id_usuario)
+    	REFERENCES ensolvers1.usuario (id_usuario)
+    	ON DELETE NO ACTION
+    	ON UPDATE NO ACTION);
+
+	INSERT INTO ensolvers.usuario (username, password) VALUES ('admin', '123');
+	INSERT INTO ensolvers.usuario (username, password) VALUES ('user', '123');
+
+	INSERT INTO ensolvers.rol (nombre, id_usuario) VALUES ('ROLE_ADMIN', '1');
+	INSERT INTO ensolvers.rol (nombre, id_usuario) VALUES ('ROLE_USER', '1');
+	INSERT INTO ensolvers.rol (nombre, id_usuario) VALUES ('ROLE_USER', '2');
+
+	UPDATE ensolvers1.usuario SET password = '$2a$10$.D4FrDV1NNZqr2xgLN9o9Ofp3rRDf1qMR/AgYgk5WrtwfSlXRNIe6' WHERE (id_usuario = '1');
+	UPDATE ensolvers1.usuario SET password = '$2a$10$ohaeKIbYV.7ZWjVzLUwSGeApgJQa3p9ihnzXKRNAoZOCS56b3McY.' WHERE (id_usuario = '2');	
+
+MYSQL
