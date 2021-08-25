@@ -9,7 +9,7 @@
         <section th:fragment="botonesAgregar" class="py-4 mb-4 bg-light">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-3" sec:authorize="hasRole('ROLE_ADMIN')">
+                    <div class="col-ms-3" sec:authorize="hasRole('ROLE_ADMIN')">
                         <a href="#" class="btn btn-primary d-grid col-5 mx-auto"
                            data-bs-toggle="modal" data-bs-target="#agregarTodo">
                             <i class="fas fa-plus"></i> [[#{accion.agregar}]]
