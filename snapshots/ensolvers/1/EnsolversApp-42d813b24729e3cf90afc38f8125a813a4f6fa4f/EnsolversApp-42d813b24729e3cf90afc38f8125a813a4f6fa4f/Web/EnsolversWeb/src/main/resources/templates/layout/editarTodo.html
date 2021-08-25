@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head>
+        <title>Edit Task</title>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <section th:fragment="editarTodo">
+            <form th:action="@{/guardar}" th:object="${todo}"
+                  method="POST" class="was-validated">
+                <input type="hidden" name="idTodo" th:field="*{idTodo}">
+                <section th:replace="layout/botonesEditar :: botonesEditar"></section>
+                <div id="details">
+                    <div class="row justify-content-center">
+                        <div class="col-md-10">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4>[[#{accion.editar}]]</h4>
+                                </div>
+                                <div class="card-body">
+                                    <div class="form-group">
+                                        <label for="to_do">[[#{tarea.nombre}]]</label>
+                                        <input type="text" class="form-control" name="task" 
+                                               required="true" th:field="*{task}"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </section>
+    </body>
+</html>

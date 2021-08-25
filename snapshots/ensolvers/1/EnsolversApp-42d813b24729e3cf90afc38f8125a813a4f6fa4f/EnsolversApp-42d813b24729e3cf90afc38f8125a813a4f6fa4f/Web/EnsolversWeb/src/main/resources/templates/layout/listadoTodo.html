@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head>
+        <title>Task List</title>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <section th:fragment="listadoTodo">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4>[[#{tarea.titulo-lista}]]</h4>
+                            </div>
+                            <div th:if="${todo != null and !todo.empty}">
+                                <table class="table table-stryped">
+                                    <thead class="table-dark">
+                                        <tr>
+                                            <th>#</th>
+                                            <th th:text="#{tarea.nombre}">Nombre</th>
+                                            <th></th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr th:each="todo, contador : ${todo}">
+                                            <td><input class="form-check-input" type="checkbox" value="" id="defaultCheck1"></td>
+                                            <td>[[${todo.task}]]</td>
+                                            <td>
+                                                <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/editar/} + ${todo.idTodo}"
+                                                   class="btn btn-success">
+                                                    <i class="fas fa-angle-double-right"> [[#{accion.editar}]]</i>
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/eliminar(idTodo=${todo.idTodo})}"
+                                                   class="btn btn-danger">
+                                                    <i class="fas fa-angle-double-right"> [[#{accion.eliminar}]]</i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="text-center p-2" th:if="${todo == null or todo.empty}">
+                                <span th:text="#{tarea.lista-vacia}">Lista Vacia</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </body>
+</html>
