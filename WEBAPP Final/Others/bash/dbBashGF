@@ -27,7 +27,7 @@ mysql -u root -p << MYSQL
   	INDEX id_rol_usuario_idx (id_usuario ASC) VISIBLE,
   	CONSTRAINT id_rol_usuario
     	FOREIGN KEY (id_usuario)
-    	REFERENCES ensolvers1.usuario (id_usuario)
+    	REFERENCES ensolvers.usuario (id_usuario)
     	ON DELETE NO ACTION
     	ON UPDATE NO ACTION);
 
@@ -38,7 +38,7 @@ mysql -u root -p << MYSQL
 	INSERT INTO ensolvers.rol (nombre, id_usuario) VALUES ('ROLE_USER', '1');
 	INSERT INTO ensolvers.rol (nombre, id_usuario) VALUES ('ROLE_USER', '2');
 
-	UPDATE ensolvers1.usuario SET password = '$2a$10$.D4FrDV1NNZqr2xgLN9o9Ofp3rRDf1qMR/AgYgk5WrtwfSlXRNIe6' WHERE (id_usuario = '1');
-	UPDATE ensolvers1.usuario SET password = '$2a$10$ohaeKIbYV.7ZWjVzLUwSGeApgJQa3p9ihnzXKRNAoZOCS56b3McY.' WHERE (id_usuario = '2');	
+	UPDATE ensolvers.usuario SET password = '$2a$10$.D4FrDV1NNZqr2xgLN9o9Ofp3rRDf1qMR/AgYgk5WrtwfSlXRNIe6' WHERE (id_usuario = '1');
+	UPDATE ensolvers.usuario SET password = '$2a$10$ohaeKIbYV.7ZWjVzLUwSGeApgJQa3p9ihnzXKRNAoZOCS56b3McY.' WHERE (id_usuario = '2');	
 
 MYSQL
